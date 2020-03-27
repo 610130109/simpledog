@@ -7,20 +7,15 @@ import com.simpledog.entry.Response;
 
 public class ResponseCreator {
 
-	private static ResponseCreator instance = null;
+	private static class ResponseCreatorInstance {
+		private static final ResponseCreator instance = new ResponseCreator();
+	}
 
 	private ResponseCreator() {
 	}
 
 	public static ResponseCreator getInstance() {
-		if (instance == null) {
-			synchronized (ResponseCreator.class) {
-				if (instance == null) {
-					instance = new ResponseCreator();
-				}
-			}
-		}
-		return instance;
+		return ResponseCreatorInstance.instance;
 	}
 
 	public Response create(String data) {

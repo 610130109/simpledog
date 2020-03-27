@@ -7,21 +7,16 @@ import com.simpledog.entry.Request;
 
 public class RequestConvert {
 
-	private static RequestConvert instance = null;
+	private static class RequestConvertInstance {
+		private static final RequestConvert instance = new RequestConvert();
+	}
 
 	private RequestConvert() {
 	}
 
-	// 单例实现 双重校验
+	// 静态内部类单例实现
 	public static RequestConvert getInstance() {
-		if (instance == null) {
-			synchronized (RequestConvert.class) {
-				if (instance == null) {
-					instance = new RequestConvert();
-				}
-			}
-		}
-		return instance;
+		return RequestConvertInstance.instance;
 	}
 
 	public Request convert(String requestStr) {
