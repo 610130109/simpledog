@@ -65,7 +65,7 @@ public class NIOServerHandler implements Runnable {
 						StringWriter sw = new StringWriter();
 						PrintWriter pw = new PrintWriter(sw);
 						e.printStackTrace(pw);
-						response.getHeader().put("content-type", "text/plain");
+						response.getHeader().put("content-type", "text/plain;charset=utf-8");
 						response.setData(sw.toString());
 					}
 				} else {
